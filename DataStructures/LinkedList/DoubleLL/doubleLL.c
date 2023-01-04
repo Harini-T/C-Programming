@@ -182,6 +182,24 @@ struct node* delInter(struct node* head, int position){
 	return head;
 }
 
+
+//Reverse the list
+struct node* reverse(struct node* head){
+	struct node* ptr1 = head;
+	struct node* ptr2 = ptr1->next;
+	
+	ptr1->next = NULL;
+	ptr1->prev = ptr2;
+	
+	while(ptr2 != NULL){
+		ptr2 -> prev = ptr2 -> next;
+		ptr2 -> next = ptr1;
+		ptr1 = ptr2;
+		ptr2 = ptr2 -> prev;
+	}
+	head = ptr1;
+	return head;
+}
 int main(){
 	
 	struct node* head = NULL;
@@ -203,7 +221,10 @@ int main(){
 	head = delLast(head);
 	print_data(head);
 	
-	head = delInter(head,3);
+	//head = delInter(head,3);
+	//print_data(head);
+	
+	head = reverse(head);
 	print_data(head);
 	return 0;
 
