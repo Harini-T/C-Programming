@@ -90,6 +90,33 @@ struct node* addAfterPos(struct node* head, int data, int position){
 
 }
 
+struct node* addBeforePos(struct node* head, int data, int position){
+	struct node* newP = NULL;
+	struct node* temp = head;
+	struct node* temp2 = NULL;
+	newP = addToEmpty(newP,data);
+	
+	int pos = position;
+	while(pos>2){
+		temp=temp->next;
+		pos--;
+	}
+	if(position ==1){
+		head = addAtBeg(head,data);
+	}
+	else{
+		temp2 = temp->next;
+		temp->next = newP;
+		temp2 -> prev = newP;
+		newP->next = temp2;
+		newP->prev = temp;
+	}
+	return head;
+
+
+}
+
+
 int main(){
 	
 	struct node* head = NULL;
@@ -100,6 +127,8 @@ int main(){
 	head = addAtEnd(head,9);
 	
 	head = addAfterPos(head,20,2);
+	
+	head = addBeforePos(head,345,3);
 	print_data(head);
 	return 0;
 
