@@ -22,7 +22,24 @@ void count_of_nodes(struct node *head){
 	printf("Count : %d\n",count);
 }
 
+
+//print all the elements of the linked list
+void print_data(struct node* head){
+	if(head == NULL){
+		printf("Linked List is empty");
+	}
+	struct node *ptr = head;
+	while(ptr!=NULL){
+		printf("%d --> ",ptr->data);
+		ptr=ptr->link;
+	}
+	printf(" NULL\n");
+}
+
+
+
 int main(){
+	
 	struct node *head=NULL;	//create head node
 	head = (struct node *)malloc(sizeof(struct node));
 	head->data=45;
@@ -40,8 +57,8 @@ int main(){
 	head -> link -> link = current;
 	
 	
-	
 	//printf("%d",head->data);
 	count_of_nodes(head);
+	print_data(head);
 	return 0;
 }
