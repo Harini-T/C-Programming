@@ -139,6 +139,29 @@ struct node* del_last(struct node *head){
 	
 }
 
+//Deleting last node using 1 temp pointer
+struct node* del_last_1(struct node *head){
+	if(head==NULL)
+		printf("List is already empty");
+	else if(head->link == NULL){
+		free(head);
+		head = NULL;
+	}
+	else{
+		struct node *temp = head;
+		while(temp->link->link != NULL){
+			temp=temp->link;
+		}
+		free(temp->link);
+		temp->link = NULL;
+	}
+	return head;
+	
+}
+
+
+
+
 int main(){
 	
 	struct node *head=NULL;	//create head node
@@ -161,6 +184,8 @@ int main(){
 	head = del_first(head);
 	
 	head = del_last(head);
+	
+	head = del_last_1(head);
 	print_data(head);
 	return 0;
 }
