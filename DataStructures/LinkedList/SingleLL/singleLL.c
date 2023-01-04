@@ -75,7 +75,15 @@ struct node* add_at_beginning(struct node* head, int d){
 	return head;
 }
 
-
+//Add element at the beginning of the list 2.0
+void add_beg(struct node **head, int d){
+	struct node *ptr = malloc(sizeof(struct node));
+	ptr->data=d;
+	ptr->link=NULL;
+	
+	ptr->link=*head;
+	*head=ptr;
+}
 
 
 int main(){
@@ -90,7 +98,8 @@ int main(){
 	ptr = add_at_end_O_1(ptr,3);
 	ptr = add_at_end_O_1(ptr,67);
 	
-	head = add_at_beginning(head,3);	
+	head = add_at_beginning(head,3);
+	add_beg(&head,2);	
 	ptr = head;
 	print_data(head);
 	return 0;
