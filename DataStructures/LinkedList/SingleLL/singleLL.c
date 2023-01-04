@@ -160,7 +160,29 @@ struct node* del_last_1(struct node *head){
 }
 
 
-
+//Delete node at position
+void del_position(struct node **head, int position){
+	struct node *current = *head;
+	struct node *previous = *head;
+	if(*head == NULL){
+		printf("List is already empty");
+	}
+	else if(position == 1){
+		*head = current -> link;
+		free(current);
+		current = NULL;
+	}
+	else{
+		while(position != 1){
+			previous = current;
+			current = current -> link;
+			position--;
+		}
+		previous->link = current->link;
+		free(current);
+		current=NULL;
+	}
+}
 
 int main(){
 	
@@ -186,6 +208,8 @@ int main(){
 	head = del_last(head);
 	
 	head = del_last_1(head);
+	
+	del_position(&head, 2);
 	print_data(head);
 	return 0;
 }
