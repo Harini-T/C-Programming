@@ -7,10 +7,23 @@ struct node{
 	struct node* next;
 };
 
+
+//Add to empty list
+struct node* addToEmpty(struct node* head, int data){
+	struct node *temp = malloc(sizeof(struct node));
+	temp -> prev = NULL;
+	temp -> data = 10;
+	temp -> next = NULL;
+	head = temp;
+	return head;
+}
+
+
 int main(){
-	struct node *head = malloc(sizeof(struct node));
-	head -> prev = NULL;
-	head -> data = 10;
-	head -> next = NULL;
+	
+	struct node* head = NULL;
+	head = addToEmpty(head,45);
+	printf("%d", head->data);
+	return 0;
 
 }
