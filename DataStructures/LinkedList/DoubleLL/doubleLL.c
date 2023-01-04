@@ -64,6 +64,32 @@ struct node* addAtEnd(struct node* head, int data){
 }
 
 
+//Insertion between the nodes
+
+struct node* addAfterPos(struct node* head, int data, int position){
+	struct node* newP = NULL;
+	struct node* temp = head;
+	struct node* temp2 = NULL;
+	newP = addToEmpty(newP,data);
+	
+	while(position!=1){
+		temp=temp->next;
+		position--;
+	}
+	if(temp->next == NULL){
+		temp->next = newP;
+		newP->prev=temp;
+	}
+	temp2 = temp->next;
+	temp->next = newP;
+	temp2 -> prev = newP;
+	newP->next = temp2;
+	newP->prev = temp;
+	return head;
+
+
+}
+
 int main(){
 	
 	struct node* head = NULL;
@@ -72,6 +98,8 @@ int main(){
 	head = addAtBeg(head,34);
 	
 	head = addAtEnd(head,9);
+	
+	head = addAfterPos(head,20,2);
 	print_data(head);
 	return 0;
 
