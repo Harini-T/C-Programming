@@ -7,6 +7,20 @@ struct node{
 	struct node *link;
 };
 
+//Count number of nodes by traversing
+void count_of_nodes(struct node *head){
+	int count=0;
+	if(head == NULL){
+		printf("Linked List is empty");
+	}	
+	struct node *ptr = NULL;
+	ptr = head;
+	while(ptr!=NULL){
+		count++;
+		ptr=ptr->link;
+	}
+	printf("Count : %d\n",count);
+}
 
 int main(){
 	struct node *head=NULL;	//create head node
@@ -22,10 +36,12 @@ int main(){
 	//create 3rd node
 	current = malloc(sizeof(struct node));
 	current -> data = 3;
-	current -> link = null;
+	current -> link = NULL;
 	head -> link -> link = current;
 	
 	
-	printf("%d",head->data);
+	
+	//printf("%d",head->data);
+	count_of_nodes(head);
 	return 0;
 }
