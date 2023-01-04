@@ -86,6 +86,24 @@ void add_beg(struct node **head, int d){
 }
 
 
+//Add element at a position
+void add_at_pos(struct node* head, int data, int pos){
+	struct node *ptr = head;
+	struct node *ptr2 = malloc(sizeof(struct node));
+	ptr2->data = data;
+	ptr2->link = NULL;
+	
+	pos--;
+	while(pos!=1){
+		ptr = ptr->link;
+		pos--;
+	}
+	ptr2->link = ptr->link;
+	ptr->link = ptr2;
+}
+
+
+
 int main(){
 	
 	struct node *head=NULL;	//create head node
@@ -101,6 +119,9 @@ int main(){
 	head = add_at_beginning(head,3);
 	add_beg(&head,2);	
 	ptr = head;
+	
+	int d=63, pos=3;
+	add_at_pos(head,d,pos);
 	print_data(head);
 	return 0;
 }
