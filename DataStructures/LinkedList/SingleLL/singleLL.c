@@ -103,6 +103,17 @@ void add_at_pos(struct node* head, int data, int pos){
 }
 
 
+//Deleting 1st node
+struct node* del_first(struct node *head){
+	if(head==NULL)
+		printf("List is already empty");
+	else{
+		struct node *temp = head;
+		head = head->link;
+		free(temp);
+	}
+	return head;
+}
 
 int main(){
 	
@@ -122,6 +133,8 @@ int main(){
 	
 	int d=63, pos=3;
 	add_at_pos(head,d,pos);
+	
+	head = del_first(head);
 	print_data(head);
 	return 0;
 }
