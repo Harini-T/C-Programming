@@ -146,6 +146,18 @@ struct node* delFirst(struct node* head){
 	return head;
 }
 
+//Delete last node
+struct node* delLast(struct node* head){
+	struct node* temp=head;
+	struct node* temp2;
+	while(temp->next != NULL)
+		temp= temp->next;
+	temp2 = temp->prev;
+	temp2->next = NULL;
+	free(temp);
+	return head;
+}
+
 int main(){
 	
 	struct node* head = NULL;
@@ -160,7 +172,11 @@ int main(){
 	//head = addBeforePos(head,345,3);
 	
 	head = createList(head);
+	print_data(head);
 	head = delFirst(head);
+	print_data(head);
+	
+	head = delLast(head);
 	print_data(head);
 	return 0;
 
