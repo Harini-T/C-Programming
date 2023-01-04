@@ -184,6 +184,39 @@ void del_position(struct node **head, int position){
 	}
 }
 
+
+
+//Delete entire linked list
+struct node* del_list(struct node* head){
+	struct node* temp = head;
+	while(temp!=NULL){
+		temp=temp->link;
+		free(head);
+		head=temp;
+	}
+	return head;
+}
+
+
+
+//Reverse linked list
+struct node* reverse(struct node *head){
+	struct node *prev = NULL;
+	struct node *next = NULL;
+	while(head != NULL){
+		next = head -> link;
+		head -> link = prev;
+		prev = head;
+		head = next;
+	}
+	head = prev;
+	return head;
+}
+
+
+
+
+
 int main(){
 	
 	struct node *head=NULL;	//create head node
@@ -210,6 +243,11 @@ int main(){
 	head = del_last_1(head);
 	
 	del_position(&head, 2);
+	
+	//head=del_list(head);
+	
+	head= reverse(head);	
+		
 	print_data(head);
 	return 0;
 }
