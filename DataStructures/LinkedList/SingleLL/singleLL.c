@@ -38,7 +38,7 @@ void print_data(struct node* head){
 
 
 
-//add element at the end of the list
+//Add element at the end of the list with O(n)
 void add_at_end_O_n(struct node *head, int data){
 	struct node *ptr, *temp;
 	ptr=head;
@@ -53,7 +53,7 @@ void add_at_end_O_n(struct node *head, int data){
 	ptr->link = temp;
 }
 
-
+//Add element at the end of the list with O(1)
 struct node* add_at_end_O_1(struct node *ptr, int data){
 	struct node *temp = malloc(sizeof(struct node));
 	temp->data = data;
@@ -62,6 +62,21 @@ struct node* add_at_end_O_1(struct node *ptr, int data){
 	ptr->link = temp;
 	return temp;
 }
+
+
+//Add element at the beginning of the list
+struct node* add_at_beginning(struct node* head, int d){
+	struct node *ptr =malloc(sizeof(struct node));
+	ptr->data = d;
+	ptr->link = NULL;
+	
+	ptr->link=head;
+	head=ptr;
+	return head;
+}
+
+
+
 
 int main(){
 	
@@ -74,8 +89,9 @@ int main(){
 	ptr = add_at_end_O_1(ptr,98);
 	ptr = add_at_end_O_1(ptr,3);
 	ptr = add_at_end_O_1(ptr,67);
-	ptr = head;
 	
+	head = add_at_beginning(head,3);	
+	ptr = head;
 	print_data(head);
 	return 0;
 }
