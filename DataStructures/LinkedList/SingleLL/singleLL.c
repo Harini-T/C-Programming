@@ -39,7 +39,7 @@ void print_data(struct node* head){
 
 
 //add element at the end of the list
-void add_at_end(struct node *head, int data){
+void add_at_end_O_n(struct node *head, int data){
 	struct node *ptr, *temp;
 	ptr=head;
 	temp = (struct node*) malloc(sizeof(struct node));
@@ -54,7 +54,14 @@ void add_at_end(struct node *head, int data){
 }
 
 
-
+struct node* add_at_end_O_1(struct node *ptr, int data){
+	struct node *temp = malloc(sizeof(struct node));
+	temp->data = data;
+	temp->link = NULL;
+	
+	ptr->link = temp;
+	return temp;
+}
 
 int main(){
 	
@@ -63,20 +70,12 @@ int main(){
 	head->data=45;
 	head->link=NULL;
 	
-	struct node *current = malloc(sizeof(struct node));	//create 2nd node
-	current -> data = 98;
-	current -> link = NULL;
-	head -> link = current;	//link head node with current node
+	struct node *ptr = head;
+	ptr = add_at_end_O_1(ptr,98);
+	ptr = add_at_end_O_1(ptr,3);
+	ptr = add_at_end_O_1(ptr,67);
+	ptr = head;
 	
-	//create 3rd node
-	current = malloc(sizeof(struct node));
-	current -> data = 3;
-	current -> link = NULL;
-	head -> link -> link = current;
-	
-	add_at_end(head,67);	//add 67 at the end
-	//printf("%d",head->data);
-	count_of_nodes(head);
 	print_data(head);
 	return 0;
 }
