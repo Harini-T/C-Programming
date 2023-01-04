@@ -158,6 +158,30 @@ struct node* delLast(struct node* head){
 	return head;
 }
 
+//Delete at a position
+struct node* delInter(struct node* head, int position){
+	struct node* temp=head;
+	struct node* temp2 = NULL;
+	if(position == 1){
+		head = delFirst(head);
+		return head;
+	}
+	while(position>1){
+		temp=temp->next;
+		position--;
+	}
+	if(temp->next == NULL)
+		head = delLast(head);
+	else{
+		temp2 = temp->prev;
+		temp2->next = temp->next;
+		temp->next->prev = temp2;
+		free(temp);
+		temp=NULL;
+	}
+	return head;
+}
+
 int main(){
 	
 	struct node* head = NULL;
@@ -177,6 +201,9 @@ int main(){
 	print_data(head);
 	
 	head = delLast(head);
+	print_data(head);
+	
+	head = delInter(head,3);
 	print_data(head);
 	return 0;
 
