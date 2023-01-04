@@ -46,12 +46,32 @@ void print_data(struct node* head){
 	printf(" NULL\n");
 }
 
+
+//Insertion at end
+struct node* addAtEnd(struct node* head, int data){
+	struct node* temp = malloc(sizeof(struct node));
+	temp -> prev = NULL;
+	temp -> data = data;
+	temp -> next = NULL;
+	
+	struct node* tp = head;
+	while(tp->next != NULL)
+		tp = tp->next;
+	tp->next = temp;
+	temp -> prev = tp;
+	
+	return head;
+}
+
+
 int main(){
 	
 	struct node* head = NULL;
 	head = addToEmpty(head,45);
 	
 	head = addAtBeg(head,34);
+	
+	head = addAtEnd(head,9);
 	print_data(head);
 	return 0;
 
