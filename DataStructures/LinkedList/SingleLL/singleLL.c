@@ -19,6 +19,13 @@ int main(){
 	current -> link = NULL;
 	head -> link = current;	//link head node with current node
 	
+	//create 3rd node
+	current = malloc(sizeof(struct node));
+	current -> data = 3;
+	current -> link = null;
+	head -> link -> link = current;
+	
+	
 	printf("%d",head->data);
 	return 0;
 }
