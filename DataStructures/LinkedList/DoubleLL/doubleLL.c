@@ -116,19 +116,51 @@ struct node* addBeforePos(struct node* head, int data, int position){
 
 }
 
+//Create an entire doubly linked list
+struct node* createList(struct node* head){
+	int n,data,i;
+	printf("Enter the number of nodes: ");
+	scanf("%d",&n);
+	
+	if(n==0)
+		return head;
+		
+	printf("Enter the element for the node 1: ");
+	scanf("%d",&data);
+	head = addToEmpty(head,data);
+	
+	for(i=1;i<n;i++){
+		printf("Enter the element for the node %d: ",i+1);
+		scanf("%d", &data);
+		head = addAtEnd(head, data);
+	}
+	return head;
+}
+
+
+//Delete the 1st node
+struct node* delFirst(struct node* head){
+	head = head->next;
+	free(head->prev);
+	head ->prev =NULL;
+	return head;
+}
 
 int main(){
 	
 	struct node* head = NULL;
-	head = addToEmpty(head,45);
+	//head = addToEmpty(head,45);
 	
-	head = addAtBeg(head,34);
+	//head = addAtBeg(head,34);
 	
-	head = addAtEnd(head,9);
+	//head = addAtEnd(head,9);
 	
-	head = addAfterPos(head,20,2);
+	//head = addAfterPos(head,20,2);
 	
-	head = addBeforePos(head,345,3);
+	//head = addBeforePos(head,345,3);
+	
+	head = createList(head);
+	head = delFirst(head);
 	print_data(head);
 	return 0;
 
